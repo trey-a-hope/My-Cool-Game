@@ -38,11 +38,8 @@ class DwarfWarrior extends PlatformPlayer
 
   @override
   Future<void> onLoad() {
-    add(
-      Globals.simpleHitBox(
-        sizeX: size.x,
-      ),
-    );
+    add(Globals.simpleHitBox(size: size.toSize()));
+
     return super.onLoad();
   }
 

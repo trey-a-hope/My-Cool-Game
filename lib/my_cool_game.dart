@@ -25,13 +25,15 @@ class _MyCoolGameState extends State<MyCoolGame> {
     ),
   );
 
+  void _onReady(BonfireGameInterface i) {
+    debugPrint('"My Cool Game" is now ready. 👍');
+  }
+
   @override
   Widget build(BuildContext context) => BonfireWidget(
         // debugMode: true,
         // showCollisionArea: true,
-        onReady: (value) {
-          debugPrint('"My Cool Game" is now ready.👍');
-        },
+        onReady: _onReady,
         playerControllers: [_keyboard],
         cameraConfig: _cameraConfig,
         player: DwarfWarrior(

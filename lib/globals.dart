@@ -8,11 +8,11 @@ class Globals {
   static const tileSize = 32.0;
 
   static RectangleHitbox simpleHitBox({
-    required double sizeX,
+    required Size size,
   }) =>
       RectangleHitbox(
-        size: Vector2.all(sizeX / 2),
-        position: Vector2(sizeX / 4, sizeX / 2),
+        size: Vector2.all(size.width / 2),
+        position: Vector2(size.width / 4, size.width / 2),
         isSolid: true,
       );
 }
