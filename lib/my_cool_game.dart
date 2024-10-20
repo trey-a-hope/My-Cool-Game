@@ -2,6 +2,7 @@ import 'package:bonfire/bonfire.dart';
 import 'package:flutter/material.dart';
 import 'package:my_cool_game/globals.dart';
 import 'package:my_cool_game/npcs/alchemist.dart';
+import 'package:my_cool_game/npcs/blacksmith.dart';
 import 'package:my_cool_game/player/dwarf_warrior.dart';
 
 class MyCoolGame extends StatefulWidget {
@@ -40,6 +41,9 @@ class _MyCoolGameState extends State<MyCoolGame> {
           WorldMapReader.fromAsset(Globals.map),
           objectsBuilder: {
             'Alchemist': (properties) => Alchemist(
+                  position: properties,
+                ),
+            'Black Smith': (properties) => Blacksmith(
                   position: properties,
                 ),
           },
