@@ -29,31 +29,6 @@ class _MyCoolGameState extends State<MyCoolGame> {
         // showCollisionArea: true,
         playerControllers: [_keyboard],
         cameraConfig: _cameraConfig,
-        // playerControllers: [
-        //   Joystick(
-        //     directional: JoystickDirectional(
-        //       color: Colors.green,
-        //     ),
-        //     actions: [
-        //       JoystickAction(
-        //         actionId: 1,
-        //         margin: const EdgeInsets.all(50),
-        //         color: Colors.green,
-        //       ),
-        //     ],
-        //   ),
-        //   Keyboard(
-        //     config: KeyboardConfig(
-        //       acceptedKeys: [
-        //         LogicalKeyboardKey.space,
-        //       ],
-        //     ),
-        //   ),
-        // ],
-        // player: GreenNinjaPlayer(
-        //   position: Vector2(40, 40),
-        //   spriteSheet: GreenNinjaSpriteSheet.spriteSheet,
-        // ),
         player: DwarfWarrior(
           position: Vector2.all(20),
         ),
