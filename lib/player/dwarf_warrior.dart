@@ -1,11 +1,19 @@
 import 'package:bonfire/bonfire.dart';
 import 'package:my_cool_game/sprite_animations.dart';
 
+enum OtherAnimation {
+  attack,
+  hurt,
+  death,
+}
+
 class DwarfWarrior extends PlatformPlayer
     with HandleForces, KeyboardEventListener {
   static const _jumpSpeed = 100.0;
   static const _speed = 150.0;
   static const _size = 60.0;
+
+  OtherAnimation? _otherAnimation;
 
   DwarfWarrior({
     required super.position,
@@ -16,7 +24,12 @@ class DwarfWarrior extends PlatformPlayer
           countJumps: 1,
           animation: PlatformAnimations(
             idleRight: SpriteAnimations.dwarfWarriorIdle,
-            runRight: SpriteAnimations.dwarfWarriorAttack,
+            runRight: SpriteAnimations.dwarfWarriorWalk,
+            others: {
+              'attack': SpriteAnimations.dwarfWarriorAttack,
+              'hurt': SpriteAnimations.dwarfWarriorHurt,
+              'death': SpriteAnimations.dwarfWarriorDeath,
+            },
           ),
         ) {
     addForce(
@@ -25,6 +38,25 @@ class DwarfWarrior extends PlatformPlayer
         value: Vector2(0, _jumpSpeed * 2),
       ),
     );
+  }
+
+  @override
+  void update(double dt) {
+    // TODO: Do not place these inside the udpate method,
+    // but rather the die, attack, and receiveDamage overrides.
+    _otherAnimation = OtherAnimation.attack;
+
+    switch (_otherAnimation) {
+      case null:
+      case OtherAnimation.hurt:
+        animation!.playOther('hurt');
+      case OtherAnimation.death:
+        animation!.playOther('death');
+      case OtherAnimation.attack:
+        animation!.playOther('attack');
+    }
+
+    super.update(dt);
   }
 
   @override
