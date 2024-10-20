@@ -26,11 +26,9 @@ flutter:
 
   assets:
     - assets/images/
-    - assets/images/dwarf_warrior/attack/ 
-    - assets/images/dwarf_warrior/death/ 
+    - assets/images/dwarf_warrior/attack/
+    - assets/images/dwarf_warrior/death/
     - assets/images/dwarf_warrior/hurt/
     - assets/images/dwarf_warrior/idle/
     - assets/images/dwarf_warrior/walk/
-
-
-
+    - assets/images/alchemist/

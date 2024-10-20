@@ -1,6 +1,7 @@
 import 'package:bonfire/bonfire.dart';
 import 'package:flutter/material.dart';
 import 'package:my_cool_game/globals.dart';
+import 'package:my_cool_game/npcs/alchemist.dart';
 import 'package:my_cool_game/player/dwarf_warrior.dart';
 
 class MyCoolGame extends StatefulWidget {
@@ -27,6 +28,9 @@ class _MyCoolGameState extends State<MyCoolGame> {
   Widget build(BuildContext context) => BonfireWidget(
         // debugMode: true,
         // showCollisionArea: true,
+        onReady: (value) {
+          debugPrint('"My Cool Game" is now ready.👍');
+        },
         playerControllers: [_keyboard],
         cameraConfig: _cameraConfig,
         player: DwarfWarrior(
@@ -34,6 +38,11 @@ class _MyCoolGameState extends State<MyCoolGame> {
         ),
         map: WorldMapBySpritefusion(
           WorldMapReader.fromAsset(Globals.map),
+          objectsBuilder: {
+            'Alchemist': (properties) => Alchemist(
+                  position: properties,
+                ),
+          },
         ),
       );
 }

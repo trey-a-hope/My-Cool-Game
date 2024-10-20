@@ -1,20 +1,50 @@
 import 'package:bonfire/bonfire.dart';
+import 'package:flutter/services.dart';
+import 'package:my_cool_game/globals.dart';
 import 'package:my_cool_game/sprite_animations.dart';
 
-class DwarfWarrior extends PlatformPlayer with KeyboardEventListener {
+class DwarfWarrior extends PlatformPlayer
+    with HandleForces, KeyboardEventListener {
   static const _speed = 150.0;
-  static const _size = 60.0;
+  static const _size = Globals.tileSize * 1.5;
 
   DwarfWarrior({
     required super.position,
   }) : super(
           size: Vector2.all(_size),
           speed: _speed,
+          countJumps: 2,
           animation: PlatformAnimations(
             idleRight: SpriteAnimations.dwarfWarriorIdle,
             runRight: SpriteAnimations.dwarfWarriorWalk,
           ),
-        );
+        ) {
+    addForce(
+      AccelerationForce2D(
+        id: 'gravity',
+        value: Vector2(0, _speed * 4),
+      ),
+    );
+  }
+
+  @override
+  void onJoystickAction(JoystickActionEvent event) {
+    if (event.event == ActionEvent.DOWN &&
+        (event.id == LogicalKeyboardKey.space || event.id == 1)) {
+      jump();
+    }
+    super.onJoystickAction(event);
+  }
+
+  @override
+  Future<void> onLoad() {
+    add(
+      Globals.simpleHitBox(
+        sizeX: size.x,
+      ),
+    );
+    return super.onLoad();
+  }
 
   @override
   void update(double dt) {

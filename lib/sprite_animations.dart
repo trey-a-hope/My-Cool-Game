@@ -6,9 +6,16 @@ class SpriteAnimations {
 
   static const _dwarfWarriorIdle = 'dwarf_warrior/idle';
   static const _dwarfWarriorWalk = 'dwarf_warrior/walk';
+  static const _alchemist = 'alchemist';
 
   static const _dwarfWarriorIdleCount = 3;
   static const _dwarfWarriorWalkCount = 6;
+  static const _alchemistCount = 8;
+
+  static Future<SpriteAnimation> get alchemist async => _spriteAnimation(
+        count: _alchemistCount,
+        path: _alchemist,
+      );
 
   static Future<SpriteAnimation> get dwarfWarriorWalk async => _spriteAnimation(
         count: _dwarfWarriorWalkCount,
