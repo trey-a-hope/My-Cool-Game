@@ -24,6 +24,8 @@ class _MyCoolGameState extends State<MyCoolGame> {
       enable: true,
       acceptedKeys: [
         LogicalKeyboardKey.space,
+        LogicalKeyboardKey.keyA,
+        LogicalKeyboardKey.keyF,
       ],
       directionalKeys: [
         KeyboardDirectionalKeys.arrows(),
@@ -48,21 +50,21 @@ class _MyCoolGameState extends State<MyCoolGame> {
               actions: [
                 // TODO: Get icons for these buttons...
                 JoystickAction(
-                  actionId: 1,
+                  actionId: JoystickActions.blue,
                   enableDirection: false,
                   color: Colors.blue,
                   size: 50,
                   margin: const EdgeInsets.only(bottom: 64, right: 64),
                 ),
                 JoystickAction(
-                  actionId: 2,
+                  actionId: JoystickActions.green,
                   enableDirection: false,
                   color: Colors.green,
                   size: 50,
                   margin: const EdgeInsets.only(bottom: 64, right: 64 * 2),
                 ),
                 JoystickAction(
-                  actionId: 3,
+                  actionId: JoystickActions.red,
                   enableDirection: false,
                   color: Colors.red,
                   size: 50,

@@ -38,27 +38,40 @@ class DwarfWarrior extends PlatformPlayer
 
   @override
   void onJoystickAction(JoystickActionEvent event) {
-    if (event.event == ActionEvent.DOWN &&
-        (event.id == LogicalKeyboardKey.space || event.id == 1)) {
-      jump();
-    }
-
     if (event.event == ActionEvent.DOWN) {
-      switch (event.id) {
-        case 1:
-          debugPrint('hurt');
-          _onJoystickAction(JoystickActions.blue);
-          break;
-        case 2:
-          debugPrint('die');
-          _onJoystickAction(JoystickActions.green);
-          break;
-        case 3:
-          debugPrint('attack');
-          _onJoystickAction(JoystickActions.red);
-          break;
+      if (event.id == LogicalKeyboardKey.space ||
+          event.id == JoystickActions.blue) {
+        _onJoystickAction(JoystickActions.green);
+        // jump();
+      }
+
+      if (event.id == LogicalKeyboardKey.keyF ||
+          event.id == JoystickActions.green) {
+        _onJoystickAction(JoystickActions.green);
+      }
+
+      if (event.id == LogicalKeyboardKey.keyA ||
+          event.id == JoystickActions.red) {
+        _onJoystickAction(JoystickActions.red);
       }
     }
+
+    // if (event.event == ActionEvent.DOWN) {
+    //   switch (event.id) {
+    //     case JoystickActions.blue:
+    //       debugPrint('hurt');
+    //       _onJoystickAction(JoystickActions.blue);
+    //       break;
+    //     case JoystickActions.green:
+    //       debugPrint('die');
+    //       _onJoystickAction(JoystickActions.green);
+    //       break;
+    //     case JoystickActions.red:
+    //       debugPrint('attack');
+    //       _onJoystickAction(JoystickActions.red);
+    //       break;
+    //   }
+    // }
 
     super.onJoystickAction(event);
   }
