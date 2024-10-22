@@ -14,11 +14,7 @@ class Alchemist extends SimpleNpc {
 
   @override
   Future<void> onLoad() {
-    add(
-      Globals.simpleHitBox(
-        size: Vector2.all(Globals.tileSize).toSize(),
-      ),
-    );
+    add(Globals.simpleHitBox(width: Globals.tileSize));
     return super.onLoad();
   }
 }

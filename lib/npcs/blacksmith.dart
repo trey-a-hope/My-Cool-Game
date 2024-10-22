@@ -11,4 +11,10 @@ class Blacksmith extends SimpleNpc {
             runRight: SpriteAnimations.blacksmith,
           ),
         );
+
+  @override
+  Future<void> onLoad() {
+    add(Globals.simpleHitBox(width: Globals.tileSize));
+    return super.onLoad();
+  }
 }

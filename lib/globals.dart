@@ -7,12 +7,34 @@ class Globals {
   static const spriteStepTime = 0.1;
   static const tileSize = 32.0;
 
+  static final forces = _Forces();
+
   static RectangleHitbox simpleHitBox({
-    required Size size,
+    required double width,
   }) =>
       RectangleHitbox(
-        size: Vector2.all(size.width / 2),
-        position: Vector2(size.width / 4, size.width / 2),
+        size: Vector2.all(width / 2),
+        position: Vector2(width / 4, width / 2),
         isSolid: true,
       );
+}
+
+class _Forces {
+  // Apply acceleration to velocity.
+  final gravity = AccelerationForce2D(
+    id: 'gravity',
+    value: Vector2(0, 400),
+  );
+
+  // Apply linear force to velocity.
+  final vacuum = LinearForce2D(
+    id: 'vacuum',
+    value: Vector2(0, 50),
+  );
+
+  // Apply resistance to velocity trying to zero.
+  final unknown = ResistanceForce2D(
+    id: 'unknown',
+    value: Vector2(0, 50),
+  );
 }
