@@ -11,4 +11,14 @@ class Alchemist extends SimpleNpc {
             runRight: SpriteAnimations.alchemist,
           ),
         );
+
+  @override
+  Future<void> onLoad() {
+    add(
+      Globals.simpleHitBox(
+        size: Vector2.all(Globals.tileSize).toSize(),
+      ),
+    );
+    return super.onLoad();
+  }
 }
