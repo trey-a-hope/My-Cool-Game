@@ -17,8 +17,12 @@ class DwarfWarrior extends PlatformPlayer
   static const _speed = 100.0;
   static const _jumpSpeed = 100.0;
 
-  DwarfWarrior({required super.position})
-      : super(
+  void Function() toggleDevMode;
+
+  DwarfWarrior({
+    required super.position,
+    required this.toggleDevMode,
+  }) : super(
           size: Vector2.all(_size),
           countJumps: 2,
           speed: _speed,
@@ -41,8 +45,7 @@ class DwarfWarrior extends PlatformPlayer
     if (event.event == ActionEvent.DOWN) {
       if (event.id == LogicalKeyboardKey.space ||
           event.id == JoystickActions.blue) {
-        _onJoystickAction(JoystickActions.green);
-        // jump();
+        jump();
       }
 
       if (event.id == LogicalKeyboardKey.keyF ||
@@ -51,27 +54,8 @@ class DwarfWarrior extends PlatformPlayer
       }
 
       if (event.id == LogicalKeyboardKey.keyA ||
-          event.id == JoystickActions.red) {
-        _onJoystickAction(JoystickActions.red);
-      }
+          event.id == JoystickActions.red) {}
     }
-
-    // if (event.event == ActionEvent.DOWN) {
-    //   switch (event.id) {
-    //     case JoystickActions.blue:
-    //       debugPrint('hurt');
-    //       _onJoystickAction(JoystickActions.blue);
-    //       break;
-    //     case JoystickActions.green:
-    //       debugPrint('die');
-    //       _onJoystickAction(JoystickActions.green);
-    //       break;
-    //     case JoystickActions.red:
-    //       debugPrint('attack');
-    //       _onJoystickAction(JoystickActions.red);
-    //       break;
-    //   }
-    // }
 
     super.onJoystickAction(event);
   }
@@ -83,10 +67,10 @@ class DwarfWarrior extends PlatformPlayer
   }
 
   @override
-  void onTap() => _showMapProgress();
+  void onTap() => toggleDevMode();
 
   @override
-  void onMouseTap(MouseButton button) => _showMapProgress();
+  void onMouseTap(MouseButton button) => toggleDevMode();
 
   void _onJoystickAction(JoystickActions action) {
     showDialog<void>(
