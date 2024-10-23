@@ -16,6 +16,8 @@ class MyCoolGame extends StatefulWidget {
 class _MyCoolGameState extends State<MyCoolGame> {
   bool _devMode = false;
 
+  Key _gameKey = GlobalKey();
+
   final _cameraConfig = CameraConfig(
     initialMapZoomFit: InitialMapZoomFitEnum.fitHeight,
     moveOnlyMapArea: true,
@@ -28,6 +30,7 @@ class _MyCoolGameState extends State<MyCoolGame> {
         LogicalKeyboardKey.space,
         LogicalKeyboardKey.keyA,
         LogicalKeyboardKey.keyF,
+        LogicalKeyboardKey.keyP,
       ],
       directionalKeys: [
         KeyboardDirectionalKeys.arrows(),
@@ -59,8 +62,6 @@ class _MyCoolGameState extends State<MyCoolGame> {
       );
     }
   }
-
-  Key _gameKey = GlobalKey();
 
   @override
   Widget build(BuildContext context) => Scaffold(
