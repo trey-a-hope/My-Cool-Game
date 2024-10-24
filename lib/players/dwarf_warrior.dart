@@ -8,9 +8,10 @@ import 'package:my_cool_game/screen_boundary_checker.dart';
 import 'package:toastification/toastification.dart';
 
 enum JoystickActions {
-  red,
-  blue,
-  green,
+  potion,
+  bow,
+  axe,
+  jump,
 }
 
 class DwarfWarrior extends PlatformPlayer
@@ -52,19 +53,27 @@ class DwarfWarrior extends PlatformPlayer
     // Jump.
     if (event.event == ActionEvent.DOWN) {
       if (event.id == LogicalKeyboardKey.space ||
-          event.id == JoystickActions.blue) {
+          event.id == JoystickActions.jump) {
         jump();
       }
 
       // Potion.
       if (event.id == LogicalKeyboardKey.keyF ||
-          event.id == JoystickActions.green) {
-        _onJoystickAction(JoystickActions.green);
+          event.id == JoystickActions.potion) {
+        // TODO: Take potion...
       }
 
-      // Attack.
+      // Axe.
       if (event.id == LogicalKeyboardKey.keyA ||
-          event.id == JoystickActions.red) {}
+          event.id == JoystickActions.axe) {
+        // TODO: Short range attack.
+      }
+
+      // Bow.
+      if (event.id == LogicalKeyboardKey.keyB ||
+          event.id == JoystickActions.bow) {
+        // TODO: Long range attack.
+      }
 
       // Pause.
       if (event.id == LogicalKeyboardKey.keyP) {
@@ -102,11 +111,15 @@ class DwarfWarrior extends PlatformPlayer
     );
   }
 
-  void _onJoystickAction(JoystickActions action) {
+  void _showMapProgress() {
+    final mapWidth = gameRef.map.getMapSize().x;
+    final curPoint = position.x;
+    final percentComplete = ((curPoint / mapWidth) * 100).round();
+
     showDialog<void>(
       context: context,
       builder: (BuildContext context) => AlertDialog(
-        title: Text(action.name),
+        title: Text('Our hero is $percentComplete% complete.'),
         content: const Text(
           'Some text can go here...',
         ),
@@ -120,16 +133,6 @@ class DwarfWarrior extends PlatformPlayer
           ),
         ],
       ),
-    );
-  }
-
-  void _showMapProgress() {
-    final mapWidth = gameRef.map.getMapSize().x;
-    final curPoint = position.x;
-    final percentComplete = ((curPoint / mapWidth) * 100).round();
-
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: Text('Our hero is $percentComplete% complete.')),
     );
   }
 }

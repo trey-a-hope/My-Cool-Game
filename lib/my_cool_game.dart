@@ -30,6 +30,7 @@ class _MyCoolGameState extends State<MyCoolGame> {
         LogicalKeyboardKey.space,
         LogicalKeyboardKey.keyA,
         LogicalKeyboardKey.keyF,
+        LogicalKeyboardKey.keyB,
         LogicalKeyboardKey.keyP,
       ],
       directionalKeys: [
@@ -78,28 +79,36 @@ class _MyCoolGameState extends State<MyCoolGame> {
                 margin: const EdgeInsets.only(bottom: 64, left: 64),
               ),
               actions: [
-                // TODO: Get icons for these buttons...
                 JoystickAction(
-                  actionId: JoystickActions.blue,
+                  sprite: Sprite.load(
+                    Globals.items.bow,
+                  ),
+                  actionId: JoystickActions.bow,
                   enableDirection: false,
                   color: Colors.blue,
-                  size: 50,
+                  size: 100,
                   margin: const EdgeInsets.only(bottom: 64, right: 64),
                 ),
                 JoystickAction(
-                  actionId: JoystickActions.green,
+                  sprite: Sprite.load(
+                    Globals.items.axet1,
+                  ),
+                  actionId: JoystickActions.axe,
                   enableDirection: false,
-                  color: Colors.green,
-                  size: 50,
-                  margin: const EdgeInsets.only(bottom: 64, right: 64 * 2),
+                  color: Colors.blue,
+                  size: 100,
+                  margin: const EdgeInsets.only(bottom: 64, right: 64 * 2.5),
                 ),
                 JoystickAction(
-                  actionId: JoystickActions.red,
+                  sprite: Sprite.load(
+                    Globals.items.bluePotion,
+                  ),
+                  actionId: JoystickActions.potion,
                   enableDirection: false,
-                  color: Colors.red,
-                  size: 50,
-                  margin: const EdgeInsets.only(bottom: 64, right: 64 * 3),
-                )
+                  color: Colors.blue,
+                  size: 100,
+                  margin: const EdgeInsets.only(bottom: 64, right: 64 * 4),
+                ),
               ],
             ),
           ],

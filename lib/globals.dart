@@ -7,6 +7,7 @@ class Globals {
   static const spriteStepTime = 0.1;
   static const tileSize = 32.0;
 
+  static final items = _Items();
   static final forces = _Forces();
 
   static RectangleHitbox simpleHitBox({
@@ -17,6 +18,14 @@ class Globals {
         position: Vector2(width / 4, width / 2),
         isSolid: true,
       );
+}
+
+class _Items {
+  final bluePotion = 'items/PotionBlue.png';
+  final greenPotion = 'items/PotionGreen.png';
+  final axet1 = 'items/AxeT1.png';
+  final map = 'items/Map.png';
+  final bow = 'items/BowT2.png';
 }
 
 class _Forces {
