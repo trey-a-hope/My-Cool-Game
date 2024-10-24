@@ -8,14 +8,14 @@ import 'package:my_cool_game/screen_boundary_checker.dart';
 import 'package:toastification/toastification.dart';
 
 enum JoystickActions {
-  potion,
-  bow,
-  axe,
-  jump,
+  buttonA,
+  buttonB,
+  buttonX,
+  buttonY,
 }
 
 class DwarfWarrior extends PlatformPlayer
-    with HandleForces, ScreenBoundaryChecker, TapGesture, MouseEventListener {
+    with HandleForces, ScreenBoundaryChecker, MouseEventListener {
   static const _size = Globals.tileSize * 1.5;
   static const _speed = 100.0;
   static const _jumpSpeed = 100.0;
@@ -36,11 +36,6 @@ class DwarfWarrior extends PlatformPlayer
         ) {
     addForce(Globals.forces.gravity);
   }
-  @override
-  void onTapDownScreen(GestureEvent event) {
-    togglePause();
-    super.onTapDownScreen(event);
-  }
 
   @override
   void update(double dt) {
@@ -50,29 +45,26 @@ class DwarfWarrior extends PlatformPlayer
 
   @override
   void onJoystickAction(JoystickActionEvent event) {
-    // Jump.
     if (event.event == ActionEvent.DOWN) {
       if (event.id == LogicalKeyboardKey.space ||
-          event.id == JoystickActions.jump) {
+          event.id == LogicalKeyboardKey.keyA ||
+          event.id == JoystickActions.buttonA) {
         jump();
       }
 
-      // Potion.
-      if (event.id == LogicalKeyboardKey.keyF ||
-          event.id == JoystickActions.potion) {
-        // TODO: Take potion...
-      }
-
-      // Axe.
-      if (event.id == LogicalKeyboardKey.keyA ||
-          event.id == JoystickActions.axe) {
-        // TODO: Short range attack.
-      }
-
-      // Bow.
       if (event.id == LogicalKeyboardKey.keyB ||
-          event.id == JoystickActions.bow) {
-        // TODO: Long range attack.
+          event.id == JoystickActions.buttonB) {
+        // Perform B action.
+      }
+
+      if (event.id == LogicalKeyboardKey.keyX ||
+          event.id == JoystickActions.buttonX) {
+        // Perform X action.
+      }
+
+      if (event.id == LogicalKeyboardKey.keyY ||
+          event.id == JoystickActions.buttonY) {
+        // Perform Y action.
       }
 
       // Pause.
@@ -88,11 +80,6 @@ class DwarfWarrior extends PlatformPlayer
   Future<void> onLoad() {
     add(Globals.simpleHitBox(width: _size));
     return super.onLoad();
-  }
-
-  @override
-  void onTap() {
-    // TODO: Should I do something here...
   }
 
   @override

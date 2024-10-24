@@ -9,6 +9,7 @@ class Globals {
 
   static final items = _Items();
   static final forces = _Forces();
+  static final buttons = _Buttons();
 
   static RectangleHitbox simpleHitBox({
     required double width,
@@ -18,6 +19,11 @@ class Globals {
         position: Vector2(width / 4, width / 2),
         isSolid: true,
       );
+}
+
+class _Buttons {
+  final aPressed = 'Xbox-10.png';
+  final aUnpressed = 'Xbox-0.png';
 }
 
 class _Items {

@@ -18,6 +18,8 @@ class _MyCoolGameState extends State<MyCoolGame> {
 
   Key _gameKey = GlobalKey();
 
+  static const _buttonSize = 50.0;
+
   final _cameraConfig = CameraConfig(
     initialMapZoomFit: InitialMapZoomFitEnum.fitHeight,
     moveOnlyMapArea: true,
@@ -29,9 +31,9 @@ class _MyCoolGameState extends State<MyCoolGame> {
       acceptedKeys: [
         LogicalKeyboardKey.space,
         LogicalKeyboardKey.keyA,
-        LogicalKeyboardKey.keyF,
         LogicalKeyboardKey.keyB,
-        LogicalKeyboardKey.keyP,
+        LogicalKeyboardKey.keyX,
+        LogicalKeyboardKey.keyY,
       ],
       directionalKeys: [
         KeyboardDirectionalKeys.arrows(),
@@ -81,33 +83,16 @@ class _MyCoolGameState extends State<MyCoolGame> {
               actions: [
                 JoystickAction(
                   sprite: Sprite.load(
-                    Globals.items.bow,
+                    Globals.buttons.aUnpressed,
                   ),
-                  actionId: JoystickActions.bow,
+                  spritePressed: Sprite.load(
+                    Globals.buttons.aPressed,
+                  ),
+                  actionId: JoystickActions.buttonA,
                   enableDirection: false,
                   color: Colors.blue,
-                  size: 100,
+                  size: _buttonSize,
                   margin: const EdgeInsets.only(bottom: 64, right: 64),
-                ),
-                JoystickAction(
-                  sprite: Sprite.load(
-                    Globals.items.axet1,
-                  ),
-                  actionId: JoystickActions.axe,
-                  enableDirection: false,
-                  color: Colors.blue,
-                  size: 100,
-                  margin: const EdgeInsets.only(bottom: 64, right: 64 * 2.5),
-                ),
-                JoystickAction(
-                  sprite: Sprite.load(
-                    Globals.items.bluePotion,
-                  ),
-                  actionId: JoystickActions.potion,
-                  enableDirection: false,
-                  color: Colors.blue,
-                  size: 100,
-                  margin: const EdgeInsets.only(bottom: 64, right: 64 * 4),
                 ),
               ],
             ),
